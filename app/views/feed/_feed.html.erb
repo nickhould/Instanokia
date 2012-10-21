@@ -1,5 +1,7 @@
 <% if !@recent_media_items.nil?  %>
 	<% @recent_media_items["data"].each do |media| %>
 	<img src="<%= media.images.thumbnail.url%>">
+	<p><%= media.location.latitude %></p>
+	<p><%= media.location.longitude %></p>
 	<% end %>
 <% end %>

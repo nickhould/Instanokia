@@ -33,4 +33,7 @@ class FeedController < ApplicationController
 		end
 
  	end
+
+ 	def new
+ 	end
 end

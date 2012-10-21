@@ -1,11 +1,13 @@
 <?xml version="1.0"?>
- 
-<markers>
-<marker>
-<name>M1</name>
-<address>ADDRESS 1</address>
-<lat><%= @lat %></lat>
-<lng><%= @lng %></lng>
-</marker>
- 
-</markers>
+ 	<markers>
+ 		<% i=0 %>
+		<% @array.each do |loc| %>
+			<marker>
+				<name><%= i +=1 %></name>
+				<address>ADDRESS <%= i %></address>
+				<lat><%= loc[:latitude] %></lat>
+				<lng><%= loc[:longitude] %></lng>
+			</marker>
+		<% end %>
+
+	</markers>

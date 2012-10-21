@@ -7,4 +7,5 @@ NokiaApp::Application.routes.draw do
   get "static_pages/maps", :controller => 'static_pages', :action => 'maploader'
   get "static_pages/xmlcheck", :controller => 'static_pages', :action => 'markersxmltest'
   get "static_pages/markers", :controller => 'static_pages', :action => 'markers'
+  get "/feed/markers", :controller => 'feed', :action => 'index'
 end

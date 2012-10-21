@@ -1,0 +1,5 @@
+<% if !@recent_media_items.nil?  %>
+	<% @recent_media_items["data"].each do |media| %>
+	<img src="<%= media.images.thumbnail.url%>">
+	<% end %>
+<% end %>

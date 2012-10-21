@@ -1,5 +1,24 @@
-<% @recent_media_items["data"].each do |media| %>
-<img src="<%= media.images.thumbnail.url%>">
+<script type="text/javascript">
+$(function() {
+  $("#geolocation input").keyup(function() {
+    $.get($("#geolocation").attr("action"), $("#geolocation").serialize(), null, "script");
+    return false;
+  });
+});
+
+</script>
+
+<h1>HTML5 location</h1>
+
+<a id="getLocation" href="#">Get Location</a>
+
+
+<%= form_tag("/feed/geolocation", :method => "get", :id => "geolocation") do %>
+  <%= label_tag(:location, "Search for:") %>
+  <%= text_field_tag(:location) %>
+  <%= submit_tag("Search") %>
 <% end %>
 
-<%= link_to "Logout", :controller => "sessions", :action => "logout" %>
+<div id ='geoLocation'></div>
+
+

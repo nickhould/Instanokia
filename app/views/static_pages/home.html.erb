@@ -1,32 +1,52 @@
- <script>  
-        jQuery(window).ready(function(){  
-            jQuery("#btnInit").click(initiate_geolocation);  
-        });  
-        function initiate_geolocation() {  
-            navigator.geolocation.getCurrentPosition(handle_geolocation_query,handle_errors);  
-        }  
-        function handle_errors(error)  
-        {  
-            switch(error.code)  
-            {  
-                case error.PERMISSION_DENIED: alert("user did not share geolocation data");  
-                break;  
-                case error.POSITION_UNAVAILABLE: alert("could not detect current position");  
-                break;  
-                case error.TIMEOUT: alert("retrieving position timed out");  
-                break;  
-                default: alert("unknown error");  
-                break;  
-            }  
-        }  
-        function handle_geolocation_query(position){  
-            alert('Lat: ' + position.coords.latitude +  
-                  ' Lon: ' + position.coords.longitude);  
-        }  
-    </script>  
-  </head>  /
+<p id="demo">Click the button to get your coordinates:</p>
+<button onclick="getLocation()">Try It</button>
+<script>
+var x=document.getElementById("demo");
+var number = "123"
+function getLocation()
+  {
+  if (navigator.geolocation)
+    {
+    navigator.geolocation.watchPosition(showPosition);
+    sendInformation()
+    }
+  else{x.innerHTML="Geolocation is not supported by this browser.";}
+  }
+function showPosition(position)
+  {
+  x.innerHTML="Latitude: " + position.coords.latitude + 
+  "<br>Longitude: " + position.coords.longitude;	
+  }
+
+function sendInformation()
+  {
+  	getLocation()
+		var JSONObject=  {
+		             location: {
+		                      latitude: position.coords.latitude,
+		                      longitude: position.coords.longitude
+		                      }
+		                  }
+
+		$.ajax({
+		            type: "POST",
+		            url : "http://localhost:3000/feed/index",
+		            cache: false,
+		            data: JSONObject,
+		            statusCode: {
+
+		                 200:function() { alert("200"); },
+		                 202:function() { alert("202"); }
+		            },
+		            success: function() {  alert("Data Send!");},
+		            error: function(xhr){  alert("The error code is: "+xhr.statusText);}        
+		        });
+	}
+</script>
+
 <h1>Nokiastagram</h1>
 
+<%= button_to "Find my location rails", { :controller => "feed", :action => "index", :latitude => "37.7808851", :longitude => "-122.3948632" } %>
 
 
 

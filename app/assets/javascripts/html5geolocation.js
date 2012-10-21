@@ -42,7 +42,7 @@ $(document).ready(function() {
 $(function($) {
     $("#getLocation").click(function() {
         $.ajax({
-            url: "/feed/geolocation",
+            url: "/index",
             data: 'lat=' + myPosition[0] +'&lon=' + myPosition[1]
         })
     });

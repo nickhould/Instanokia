@@ -15,3 +15,14 @@
 //= require jquery-ui
 //= require_tree .
  
+$(function() {
+	  $("#index_search").submit(function() {
+    $.get(this.action, $(this).serialize(), null, "script");
+    return false;
+  });
+
+  $("#index_search input").keyup(function() {
+    $.get($("#index_search").attr("action"), $("#index_search").serialize(), null, "script");
+    return false;
+  });
+});

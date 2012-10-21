@@ -1,24 +1,14 @@
-<script type="text/javascript">
-$(function() {
-  $("#geolocation input").keyup(function() {
-    $.get($("#geolocation").attr("action"), $("#geolocation").serialize(), null, "script");
-    return false;
-  });
-});
-
-</script>
-
-<h1>HTML5 location</h1>
+<h1>Instanokia</h1>
 
 <a id="getLocation" href="#">Get Location</a>
 
 
-<%= form_tag("/feed/geolocation", :method => "get", :id => "geolocation") do %>
+<%= form_tag("/index", :method => "get", :id => "index_search") do %>
   <%= label_tag(:location, "Search for:") %>
   <%= text_field_tag(:location) %>
-  <%= submit_tag("Search") %>
+  <%= submit_tag "Search", :name => nil %>
 <% end %>
 
 <div id ='geoLocation'></div>
 
-
+<%= link_to "Sign out", controller: "sessions", action: "logout" %>

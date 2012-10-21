@@ -12,7 +12,7 @@ class SessionsController < ApplicationController
   end
 
   def logout
-  	session[:access_token] = nil
+  	cookies.delete(:access_token)
   	redirect_to :controller => 'static_pages', :action => 'home'
   end
 end

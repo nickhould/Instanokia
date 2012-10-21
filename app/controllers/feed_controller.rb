@@ -6,6 +6,6 @@ class FeedController < ApplicationController
 
     client = Instagram.client(:access_token => session[:access_token])
     @user = client.user
-    @recent_media_items = client.user_recent_media
+    @recent_media_items = Instagram.media_search("37.7808851","-122.3948632")
   end
 end
